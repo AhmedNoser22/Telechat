@@ -1,0 +1,55 @@
+<div class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-rose-50 via-red-50 to-pink-50 p-4 md:p-10">
+    <div class="flex w-full max-w-5xl bg-white/60 backdrop-blur-xl rounded-[2.5rem] shadow-2xl overflow-hidden border border-white/50">
+        <div class="hidden md:block md:w-1/2 bg-cover bg-center bg-no-repeat" style="background-image: url('register.svg'); background-size: 80%; background-position: center bottom;">
+        </div>
+
+        <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
+            <div class="text-center mb-10">
+                <h1 class="text-4xl font-black bg-gradient-to-r from-red-500 to-pink-600 bg-clip-text text-transparent">Welcome Back!</h1>
+                <p class="text-gray-500 mt-2 font-medium">Chat, laugh, and connect with friends!</p>
+            </div>
+
+            <form #userForm="ngForm" (ngSubmit)="userForm.valid && login()" class="space-y-5">
+                <mat-form-field class="w-full custom-field" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput required name="email" [(ngModel)]="email" #emailModel="ngModel" placeholder="example@mail.com">
+                    @if(emailModel.errors?.['required'] && emailModel.touched){ <mat-error>Email is required</mat-error> }
+                </mat-form-field>
+
+                <mat-form-field class="w-full custom-field" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput required name="password" [(ngModel)]="password" #passwordModel="ngModel" [type]="hide() ? 'password' : 'text'">
+                    <mat-icon matSuffix (click)="togglePassword($event)" class="cursor-pointer text-rose-400">
+                        {{ hide() ? 'visibility' : 'visibility_off' }}
+                    </mat-icon>
+                    @if(passwordModel.errors?.['required'] && passwordModel.touched){ <mat-error>Password is required</mat-error> }
+                </mat-form-field>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-red-500 to-pink-600 text-white font-bold py-4 rounded-2xl shadow-lg shadow-rose-200 hover:scale-[1.02] active:scale-95 transition-all">
+                    Login
+                </button>
+
+                <div class="relative flex items-center gap-4 my-6">
+                    <div class="flex-grow border-t border-gray-200"></div>
+                    <span class="text-gray-400 text-xs font-bold uppercase tracking-widest">Or</span>
+                    <div class="flex-grow border-t border-gray-200"></div>
+                </div>
+
+                <button type="button" class="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-100 py-3.5 rounded-2xl font-semibold text-gray-700 hover:bg-gray-50 transition-all">
+                    <svg class="w-5 h-5" viewBox="0 0 533.5 544.3">
+                        <path fill="#4285F4" d="M533.5 278.4c0-18.4-1.5-36-4.3-53.3H272v100.8h146.9c-6.4 34.3-25.5 63.3-54.3 82.7v68h87.8c51.4-47.4 80.1-117.2 80.1-198.2z" />
+                        <path fill="#34A853" d="M272 544.3c73.4 0 135-24.2 180-65.8l-87.8-68c-24.4 16.3-55.6 25.8-92.2 25.8-70.8 0-130.7-47.7-152.1-111.5H31.8v69.7c45.2 89.3 137 149.8 240.2 149.8z" />
+                        <path fill="#FBBC05" d="M119.9 337.5c-10.5-31.4-10.5-65.2 0-96.6V171.2H31.8c-42.2 83.3-42.2 182.4 0 265.7l88.1-69.4z" />
+                        <path fill="#EA4335" d="M272 107.7c38.9-.6 76.6 14.5 105.4 42.7l79.2-79.2C406.9 21.8 345.3-2.4 272 0 168.8 0 76.9 60.5 31.8 149.8l88.1 69.7c21.5-63.8 81.4-111.8 152.1-111.8z" />
+                    </svg>
+                    Continue with Google
+                </button>
+
+                <div class="flex flex-col sm:flex-row justify-between gap-2 mt-8 text-sm">
+                    <a routerLink="/register" class="text-rose-500 font-bold hover:underline text-center">Create an account</a>
+                    <a routerLink="/reset-password" class="text-gray-400 font-medium hover:text-rose-500 text-center">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

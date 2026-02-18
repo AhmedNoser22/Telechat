@@ -1,0 +1,25 @@
+global using API.Data;
+global using API.Models;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.IdentityModel.Tokens;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Http;
+global using API.Common;
+global using System.Text;
+global using API.Services;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.ComponentModel.DataAnnotations;
+global using API.DTOs;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using Microsoft.AspNetCore.SignalR;
+global using System.Collections.Concurrent;
+global using API.Setting;
+global using MailKit.Net.Smtp;
+global using Microsoft.Extensions.Options;
+global using MimeKit;
+global using API.EndPoints;
+

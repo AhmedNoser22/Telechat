@@ -1,0 +1,78 @@
+<div class="flex chat-box py-2 border-[20px] border-transparent flex-col">
+  <div class="h-full">
+
+    @for (item of chatService.chatMessages(); track item.id) {
+
+    @if (item.senderId !== authService.currentLoggedUser()?.id) {
+
+    <div class="flex mb-3 flex-row items-center justify-normal">
+
+      <div>
+
+        <div
+          class="flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r from-rose-400 to-pink-500 flex-shrink-0">
+
+          <img [src]="chatService.currentOpenedChat()?.profilePicture" [alt]="chatService.currentOpenedChat()?.fullName"
+            class="rounded-full h-8 w-8" />
+
+        </div>
+      </div>
+      <div class="chat-message bg-white p-4 rounded-lg ml-2 shadow-sm">
+        <span class="text-sm text-gray-800 block">
+          {{item.content}}
+        </span>
+        <span class="text-right text-gray-400 text-[10px] block mt-1">
+          {{item.createDate | date:'short'}}
+        </span>
+      </div>
+    </div>
+    } @else {
+    <div class="flex flex-row items-center justify-end mb-3">
+      <div class="chat-message bg-gradient-to-r from-rose-500 to-pink-600 p-4 rounded-lg mr-2 shadow-sm text-white">
+        <span class="text-sm block">
+
+          {{item.content}}
+
+        </span>
+
+        <span class="text-right text-white/80 text-xs block mt-1">
+
+          {{item.createDate | date:'short'}}
+
+        </span>
+
+      </div>
+
+
+
+      <div>
+
+        <div
+          class="flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 flex-shrink-0">
+
+          <img [src]="authService.currentLoggedUser()?.profilePicture" [alt]="authService.currentLoggedUser()?.fullName"
+            class="rounded-full h-8 w-8" />
+
+        </div>
+
+      </div>
+
+    </div>
+
+    }
+
+    } @empty {
+
+    <div class="flex flex-col items-center justify-center h-full">
+
+      <mat-icon class="text-gray-400 chat-icon">chat</mat-icon>
+
+      <h6 class="text-center text-gray-500">No message yet</h6>
+
+    </div>
+
+    }
+
+  </div>
+
+</div>

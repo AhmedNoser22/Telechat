@@ -1,0 +1,22 @@
+# =====================
+# Backend (.NET)
+# =====================
+API/bin/
+API/obj/
+API/appsettings.json
+API/appsettings.Development.json
+
+# =====================
+# Frontend (Angular)
+# =====================
+client/node_modules/
+client/dist/
+client/.angular/
+
+# =====================
+# عام
+# =====================
+.vscode/
+.env
+.env.*
+*.log

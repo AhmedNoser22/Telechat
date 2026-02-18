@@ -1,0 +1,25 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-rose-50 via-red-50 to-pink-50 px-4">
+    <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-[0_20px_50px_rgba(239,68,68,0.15)] border border-red-50 w-full max-w-md text-center">
+        <div class="mb-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-red-100 rounded-full mb-4">
+                <mat-icon class="text-red-500 !text-4xl w-auto h-auto">mark_email_read</mat-icon>
+            </div>
+            <h2 class="text-3xl font-extrabold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">Verify Email</h2>
+            <p class="text-gray-500 mt-2">Enter the 6-digit code sent to<br><span class="text-red-400 font-semibold">{{email}}</span></p>
+        </div>
+
+        <div class="flex justify-between gap-2 mb-8">
+            @for(digit of code; track $index) {
+                <div class="w-12 h-16">
+                    <input type="text" maxlength="1" [(ngModel)]="code[$index]" (input)="onInput($event, $index)" (keydown)="onKeyDown($event, $index)"
+                        class="w-full h-full text-center text-2xl font-bold bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-red-400 focus:ring-4 focus:ring-red-100 focus:outline-none transition-all duration-300" />
+                </div>
+            }
+        </div>
+
+        <button (click)="verify()" [disabled]="code.join('').length < 6"
+            class="w-full bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl p-4 font-bold shadow-lg hover:shadow-red-500/30 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50">
+            Confirm & Join Chat
+        </button>
+    </div>
+</div>
