@@ -14,7 +14,7 @@ client/dist/
 client/.angular/
 
 # =====================
-# عام
+# General
 # =====================
 .vscode/
 .env
